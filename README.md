@@ -147,6 +147,33 @@ Harita kütüphaneleri `public/vendor` altından yerel olarak servis edilir; CDN
 karoları OpenStreetMap'ten, adres arama Nominatim'den gelir. Yoğun kullanımda kendi karo sunucunuzu veya
 ticari bir sağlayıcı kullanın.
 
+## Laravel Cloud'a kurulum
+
+1. [cloud.laravel.com](https://cloud.laravel.com) → **New application** → bu GitHub deposunu seçin (`main` dalı).
+2. **Database** ekleyin (Laravel MySQL veya Serverless Postgres). Bağlantı değişkenleri otomatik tanımlanır.
+3. **Environment variables** bölümüne ekleyin:
+   ```
+   APP_NAME="Transfer Ops"
+   APP_LOCALE=tr
+   APP_TIMEZONE=Europe/Istanbul
+   TRANSFER_CURRENCY=EUR
+   ```
+4. **Build commands** (varsayılanların sonuna):
+   ```
+   php artisan filament:assets
+   ```
+5. **Deploy commands:**
+   ```
+   php artisan migrate --force
+   ```
+6. İlk deploy'dan sonra bir kez **Commands** sekmesinden demo veriyi yükleyin
+   (admin kullanıcısı + Antalya bölgeleri + örnek rezervasyonlar; çıktıda demo API token'ları görünür):
+   ```
+   php artisan db:seed --force
+   ```
+7. E-postalar kuyruğa alındığı için **Queue worker** açın ve `MAIL_*` değişkenlerini girin.
+8. Girişten sonra `admin@example.com` şifresini hemen değiştirin.
+
 ## Production için yapılacaklar
 
 - `User::canAccessPanel` şu an her kullanıcıya izin veriyor. Rol ve izin yönetimi ekleyin
