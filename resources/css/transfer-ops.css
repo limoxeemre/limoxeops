@@ -1,0 +1,64 @@
+/* Transfer Ops özel bileşen stilleri – Filament CSS değişkenlerini kullanır (açık/koyu tema uyumlu) */
+
+.tr-map-wrap { position: relative; border-radius: 0.75rem; overflow: hidden; border: 1px solid var(--gray-200); }
+.dark .tr-map-wrap { border-color: rgb(255 255 255 / 0.1); }
+.tr-map { width: 100%; position: relative; z-index: 0; }
+.tr-map-toolbar { display: flex; gap: .5rem; padding: .5rem; background: var(--gray-50); border-bottom: 1px solid var(--gray-200); align-items: center; flex-wrap: wrap; }
+.dark .tr-map-toolbar { background: rgb(255 255 255 / 0.03); border-color: rgb(255 255 255 / 0.1); }
+.tr-map-toolbar input { flex: 1; min-width: 12rem; border-radius: .5rem; border: 1px solid var(--gray-300); padding: .375rem .75rem; font-size: .875rem; background: white; color: var(--gray-950); }
+.dark .tr-map-toolbar input { background: rgb(255 255 255 / 0.05); border-color: rgb(255 255 255 / 0.15); color: white; }
+.tr-map-btn { border-radius: .5rem; padding: .375rem .75rem; font-size: .8125rem; font-weight: 600; background: var(--primary-600); color: white; border: 0; cursor: pointer; white-space: nowrap; }
+.tr-map-btn.secondary { background: transparent; color: var(--gray-700); border: 1px solid var(--gray-300); }
+.dark .tr-map-btn.secondary { color: var(--gray-200); border-color: rgb(255 255 255 / 0.2); }
+.tr-map-results { position: absolute; top: 3.1rem; left: .5rem; right: .5rem; z-index: 1000; background: white; border-radius: .5rem; box-shadow: 0 10px 25px rgb(0 0 0 / .15); max-height: 16rem; overflow: auto; }
+.dark .tr-map-results { background: var(--gray-900); }
+.tr-map-results button { display: block; width: 100%; text-align: left; padding: .5rem .75rem; font-size: .8125rem; border-bottom: 1px solid var(--gray-100); color: var(--gray-800); }
+.dark .tr-map-results button { color: var(--gray-200); border-color: rgb(255 255 255 / .05); }
+.tr-map-results button:hover { background: var(--primary-50); }
+.dark .tr-map-results button:hover { background: rgb(255 255 255 / .05); }
+.tr-map-hint { font-size: .75rem; color: var(--gray-500); padding: .375rem .625rem; }
+.tr-map-coords { font-variant-numeric: tabular-nums; font-size: .75rem; color: var(--gray-500); margin-left: auto; }
+
+/* Fiyat özeti */
+.tr-price { font-size: .875rem; color: var(--gray-700); }
+.dark .tr-price { color: var(--gray-300); }
+.tr-price-row { display: flex; justify-content: space-between; gap: 1rem; padding: .3rem 0; }
+.tr-price-row.muted { color: var(--gray-500); font-size: .8125rem; padding-left: .75rem; }
+.tr-price-row.discount { color: var(--success-600); }
+.tr-price-row.total { border-top: 1px dashed var(--gray-300); margin-top: .5rem; padding-top: .75rem; font-size: 1.25rem; font-weight: 700; color: var(--gray-950); }
+.dark .tr-price-row.total { color: white; border-color: rgb(255 255 255 / .2); }
+.tr-price-head { font-weight: 600; color: var(--gray-950); }
+.dark .tr-price-head { color: white; }
+.tr-badge { display: inline-flex; align-items: center; gap: .25rem; border-radius: 999px; padding: .125rem .5rem; font-size: .6875rem; font-weight: 600; }
+.tr-badge.success { background: var(--success-50); color: var(--success-700); }
+.tr-badge.warning { background: var(--warning-50); color: var(--warning-700); }
+.tr-badge.danger { background: var(--danger-50); color: var(--danger-700); }
+.tr-badge.info { background: var(--info-50); color: var(--info-700); }
+.dark .tr-badge.success { background: rgb(34 197 94 / .15); color: var(--success-300); }
+.dark .tr-badge.warning { background: rgb(245 158 11 / .15); color: var(--warning-300); }
+.dark .tr-badge.danger { background: rgb(239 68 68 / .15); color: var(--danger-300); }
+.dark .tr-badge.info { background: rgb(59 130 246 / .15); color: var(--info-300); }
+.tr-empty { text-align: center; padding: 1.5rem .5rem; color: var(--gray-500); font-size: .875rem; }
+
+/* Teklif kartları (Fiyat Hesapla sayfası) */
+.tr-quote-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+.tr-quote-card { border-radius: .75rem; border: 1px solid var(--gray-200); padding: 1rem; background: white; }
+.dark .tr-quote-card { background: rgb(255 255 255 / .03); border-color: rgb(255 255 255 / .1); }
+.tr-quote-card h3 { font-weight: 700; color: var(--gray-950); }
+.dark .tr-quote-card h3 { color: white; }
+.tr-quote-card .cap { font-size: .75rem; color: var(--gray-500); margin-bottom: .5rem; }
+.tr-quote-card .price { font-size: 1.75rem; font-weight: 800; color: var(--primary-600); margin: .5rem 0; }
+.tr-quote-meta { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+/* Bölge haritası lejantı */
+.tr-legend { display: flex; flex-wrap: wrap; gap: .75rem; font-size: .8125rem; color: var(--gray-700); margin-top: .75rem; }
+.dark .tr-legend { color: var(--gray-300); }
+.tr-legend span.dot { display: inline-block; width: .75rem; height: .75rem; border-radius: 3px; margin-right: .35rem; vertical-align: -1px; }
+
+/* Leaflet'in iç z-index'leri harita içinde kalsın; Filament modal/dropdown'ların üstüne çıkmasın */
+.tr-map { isolation: isolate; }
+
+/* Operasyon tablosu: 12 saat içinde ataması yapılmamış transferler vurgulanır */
+.tr-row-urgent > td:first-child { box-shadow: inset 4px 0 0 var(--danger-500); }
+.tr-row-urgent { background: color-mix(in oklab, var(--danger-500) 6%, transparent) !important; }
+.tr-row-muted { opacity: .55; }
